@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VNJX66Z0YF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VNJX66Z0YF');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CatSocial - Nơi những chú mèo tìm bạn đời, bạn bè và tình yêu đích thực." />
+  <meta name="keywords" content="catsocial, app mèo, tìm bạn mèo, dating mèo, social cho mèo" />
+
+  <title>CatSocial - Gặp gỡ mèo yêu gần bạn</title>
+  <link rel="icon" href="./assets/cat1.svg" type="image/svg+xml" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./styles/main.css" />
+  <link rel="stylesheet" href="./styles/home.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="./index.html" class="logo">
+      <span>Cat<span style="color: var(--primary)">Social</span></span>
+    </a>
+    
+    <div class="nav-actions">
+      <a href="./search.html" aria-label="Tìm mèo">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </a>
+      <a href="./login.html" aria-label="Đăng nhập">
+        <i class="fa-solid fa-user"></i>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-section-info">
+      <div>
+        <p id="hero-title" class="hero-section-info-title">Tìm tình yêu cho mèo của bạn</p>
+        
+        
+        <div class="action-buttons-container">
+          <a id="watch-now-btn" class="btn primary-btn" href="#cta">
+            <i class="fa-solid fa-paw"></i>
+            <span>Tìm Mèo Ngay</span>
+          </a>
+          <a id="view-info-btn" class="btn secondary-btn" href="./About.html">
+            <i class="fa-solid fa-circle-info"></i>
+            <span>Tìm Hiểu Thêm</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-preview-img-container">
+      <img src="./assets/cat-simba.jpg" alt="Mèo Simba xinh đẹp" class="hero-preview-img" />
+    </div>
+  </section>
+
+  <main id="main-content">
+    <!-- Featured Cats Section -->
+    <section class="featured-cats-section">
+      <h2 style="text-align: center; margin-bottom: 2rem; color: #1f1e23; font-size: 2rem;">🐱 Những mèo nổi bật hôm nay</h2>
+      
+      <div class="card-deck">
+        <!-- Card 1 -->
+        <div class="swipe-card" data-cat-id="1">
+          <div class="card-media">
+            <img src="./assets/cat-luna.jpg" alt="Mèo Luna" />
+            <span class="name-badge">Luna, 2 tuổi</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Luna</h3>
+            <p class="card-sub">Tây Hồ, Hà Nội - Mèo xinh lắm 💕</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="swipe-card" data-cat-id="2">
+          <div class="card-media">
+            <img src="./assets/cat-mit.jpg" alt="Mèo Mít" />
+            <span class="name-badge">Mít, 1.5 tuổi</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Mít</h3>
+            <p class="card-sub">Cầu Giấy, Hà Nội - Hoạt bát & vui tính</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="swipe-card" data-cat-id="3">
+          <div class="card-media">
+            <img src="./assets/cat-miu.jpg" alt="Mèo Miu" />
+            <span class="name-badge">Miu, 3 tuổi</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Miu</h3>
+            <p class="card-sub">Ba Đình, Hà Nội - Yêu thích ôm ấp</p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="swipe-card" data-cat-id="4">
+          <div class="card-media">
+            <img src="./assets/cat-ti.jpg" alt="Mèo Tí" />
+            <span class="name-badge">Tí, 2.5 tuổi</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Tí</h3>
+            <p class="card-sub">Hai Bà Trưng, Hà Nội - Bé xinh xắn</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="swipe-actions">
+        <button class="action pass" id="pass-btn" title="Bỏ qua">
+          <i class="fa-solid fa-x"></i>
+        </button>
+        <button class="action like" id="like-btn" title="Thích">
+          <i class="fa-solid fa-heart"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" style="text-align: center; padding: 4rem 2rem; background: linear-gradient(135deg, rgba(255, 88, 100, 0.1), rgba(255, 138, 118, 0.1)); border-radius: 20px; margin-top: 4rem;">
+      <h2 style="font-size: 2rem; color: #1f1e23; margin-bottom: 1rem;">Bạn cũng muốn để boss mèo tìm được bạn đời?</h2>
+      <p style="color: #6f6a70; margin-bottom: 2rem; font-size: 1.1rem;">Đăng ký ngay để tạo hồ sơ cho mèo của bạn!</p>
+      <a href="./register.html" class="btn primary-btn" style="font-size: 1.1rem;">
+        <i class="fa-solid fa-paw"></i> Tạo Hồ Sơ Cho Mèo
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <p>Bản quyền © 2026 CatSocial — Làm với ❤️ cho mèo</p>
+    <div class="social-links">
+      <p>Liên hệ:Catsocial@gmail.com</p>
+      <a href="https://www.facebook.com/oantuantu.171563/"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Facebook">
+       <i class="fa-brands fa-facebook-f"></i>
+      </a>
+      </a>
+      <a href="https://www.instagram.com/oantuantu.171563/"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://x.com/TuanO38710"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="X">
+        <i class="fa-brands fa-x-twitter"></i>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="./scripts/swipe.js"></script>
+</body>
+</html>

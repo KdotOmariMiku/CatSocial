@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Trang quản trị</title>
+	<link rel="stylesheet" href="styles/Administrator.css">
+</head>
+<body>
+	<header>
+		<h1>Trang quản trị CatSocial</h1>
+		<a href="index.html">Về trang chủ</a>
+	</header>
+
+	<main>
+		<section class="stats" aria-label="Thống kê">
+			<article class="stat-card">
+				<p>Tổng người dùng</p>
+				<strong id="totalUsers">0</strong>
+			</article>
+			<article class="stat-card">
+				<p>Tài khoản chưa khóa</p>
+				<strong id="activeUsers">0</strong>
+			</article>
+			<article class="stat-card">
+				<p>Đang bị khóa</p>
+				<strong id="lockedUsers">0</strong>
+			</article>
+			<article class="stat-card">
+				<p>Tổng lượt Match</p>
+				<strong id="totalMatches">0</strong>
+			</article>
+		</section>
+
+		<section class="panel chart-panel" aria-labelledby="growthHeading">
+			<div class="panel-heading">
+				<h2 id="growthHeading">Tăng trưởng</h2>
+				<label class="period-control" for="chartPeriod">
+					Xem theo
+					<select id="chartPeriod">
+						<option value="day">Ngày (30 ngày)</option>
+						<option value="week">Tuần (8 tuần)</option>
+					</select>
+				</label>
+			</div>
+			<p class="chart-legend"><span class="legend-users"></span> Người dùng mới <span class="legend-matches"></span> Match mới</p>
+			<p class="schema-hint">Người dùng lấy từ Firebase Authentication; Match được đếm theo document trong Firestore <code>matches</code>, có thời gian <code>createdAt</code> (hoặc <code>timestamp</code>).</p>
+			<canvas id="growthChart" role="img" aria-label="Biểu đồ tăng trưởng người dùng và Match"></canvas>
+			<p id="chartMessage" class="panel-message" role="status"></p>
+		</section>
+
+		<section class="panel user-panel">
+			<div class="panel-heading">
+				<h2>Quản lý người dùng</h2>
+				<input id="searchInput" type="search" placeholder="Tìm theo tên..." aria-label="Tìm người dùng">
+			</div>
+			<p id="adminMessage" role="status">Đang kiểm tra quyền truy cập...</p>
+
+			<div class="table-scroll">
+				<table>
+					<thead>
+						<tr>
+							<th>Họ tên</th>
+							<th>Email</th>
+							<th>Trạng thái</th>
+							<th>Thao tác</th>
+						</tr>
+					</thead>
+					<tbody id="userTableBody"></tbody>
+				</table>
+			</div>
+		</section>
+
+		<section class="panel">
+			<div class="panel-heading">
+				<h2>Hồ sơ &amp; ảnh đại diện</h2>
+				<button id="refreshProfiles" type="button" class="secondary-button">Tải lại</button>
+			</div>
+			<p id="profileMessage" class="panel-message" role="status">Đang tải hồ sơ...</p>
+			<div class="table-scroll">
+				<table>
+					<thead>
+						<tr><th>Ảnh</th><th>Họ tên</th><th>Email</th><th>Thao tác</th></tr>
+					</thead>
+					<tbody id="profileTableBody"></tbody>
+				</table>
+			</div>
+		</section>
+
+		<section class="panel">
+			<div class="panel-heading">
+				<h2>Báo cáo vi phạm</h2>
+				<button id="refreshReports" type="button" class="secondary-button">Tải lại</button>
+			</div>
+			<p id="reportMessage" class="panel-message" role="status">Đang tải báo cáo...</p>
+			<p class="schema-hint">Dữ liệu báo cáo lấy từ Firestore <code>reports</code>: mỗi báo cáo nên có <code>targetUid</code>, <code>reason</code>, <code>photoUrl</code>, <code>createdAt</code> và <code>status: "pending"</code>.</p>
+			<div class="table-scroll">
+				<table>
+					<thead>
+						<tr><th>Người bị báo cáo</th><th>Lý do</th><th>Ảnh vi phạm</th><th>Trạng thái</th><th>Thao tác</th></tr>
+					</thead>
+					<tbody id="reportTableBody"></tbody>
+				</table>
+			</div>
+		</section>
+
+		<section class="panel">
+			<div class="panel-heading">
+				<h2>Nhật ký admin</h2>
+				<button id="refreshLogs" type="button" class="secondary-button">Tải lại</button>
+			</div>
+			<p id="logMessage" class="panel-message" role="status">Đang tải nhật ký...</p>
+			<div class="table-scroll">
+				<table>
+					<thead>
+						<tr><th>Thời gian</th><th>Thao tác</th><th>Tài khoản liên quan</th><th>Chi tiết</th></tr>
+					</thead>
+					<tbody id="logTableBody"></tbody>
+				</table>
+			</div>
+		</section>
+	</main>
+
+	<script type="module" src="script/administrator.js"></script>
+</body>
+</html>

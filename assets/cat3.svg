@@ -1,0 +1,13 @@
+<svg width="800" height="1000" viewBox="0 0 800 1000" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1000" fill="#f9f1f4"/>
+  <circle cx="400" cy="420" r="300" fill="#cf9da6"/>
+  <ellipse cx="300" cy="315" rx="58" ry="94" fill="#7a4c58"/>
+  <ellipse cx="500" cy="315" rx="58" ry="94" fill="#7a4c58"/>
+  <path d="M260 420 Q400 510 540 420 Q520 520 400 555 Q280 520 260 420" fill="#6d4050"/>
+  <path d="M360 625 Q400 675 440 625" stroke="#6d4050" stroke-width="24" fill="none" stroke-linecap="round"/>
+  <ellipse cx="300" cy="365" rx="26" ry="36" fill="#fff"/>
+  <ellipse cx="500" cy="365" rx="26" ry="36" fill="#fff"/>
+  <circle cx="300" cy="365" r="11" fill="#2f1b22"/>
+  <circle cx="500" cy="365" r="11" fill="#2f1b22"/>
+  <text x="50%" y="940" font-size="76" text-anchor="middle" fill="#7a4c58" font-family="Nunito">Luna</text>
+</svg>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Search page của CatSocial - tìm kiếm mèo đẹp gần bạn." />
+  <title>CatSocial - Tìm mèo</title>
+  <link rel="icon" href="./assets/cat1.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles/main.css" />
+  <link rel="stylesheet" href="./styles/search.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <a href="./index.html" class="logo">
+      <span>Cat<span style="color: var(--primary)">Social</span></span>
+    </a>
+    <div class="nav-actions">
+      <a href="./index.html">Trang chủ</a>
+      <a href="./CatSocial.html">CatSocial</a>
+      <a href="./login.html">Đăng nhập</a>
+    </div>
+  </nav>
+
+  <section class="search-hero">
+    <div class="search-hero-inner">
+      <h1>Search mèo ngay</h1>
+      <p>Nhập tên boss hoặc mô tả để tìm mèo phù hợp gần bạn.</p>
+      <div class="search-form">
+        <input id="searchInput" type="search" placeholder="Tìm 'Miu', 'Luna', 'hơn 1 km'..." />
+        <button id="searchButton" class="btn primary-btn">Tìm kiếm</button>
+      </div>
+      <p class="search-summary"><span id="resultCount">5</span> boss đang chờ bạn</p>
+    </div>
+  </section>
+
+  <main class="search-results" id="searchResults">
+    <!-- Cards will load here -->
+  </main>
+
+  <footer>
+    <p>Bản quyền © 2025 CatSocial — Làm với ❤️ cho mèo</p>
+  </footer>
+
+  <script type="module" src="./scripts/search.js"></script>
+</body>
+</html>

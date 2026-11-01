@@ -1,0 +1,44 @@
+/* Home-specific overrides to give a Tinder-like feel */
+
+/* Hero image styling */
+.hero-preview-img-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-preview-img-container img {
+  border-radius: 28px;
+  box-shadow: 0 30px 80px rgba(255, 107, 139, 0.12);
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Featured cats section */
+.featured-cats-section {
+  width: 100%;
+  text-align: center;
+}
+
+.hero-preview-img-container img{border-radius:28px;box-shadow:0 30px 80px rgba(255,107,139,0.12)}
+
+/* make the "Dùng trên web" button pop */
+.btn-light.text-dark{background:linear-gradient(135deg,#fff,#fff);border-radius:999px;padding:14px 26px;font-weight:700}
+
+/* small card stack animation */
+.card-deck .swipe-card:nth-child(1){transform:translateX(-50%) translateY(0) scale(1);z-index:30}
+.card-deck .swipe-card:nth-child(2){transform:translateX(-50%) translateY(18px) scale(0.98);z-index:20;filter:brightness(0.98)}
+.card-deck .swipe-card:nth-child(3){transform:translateX(-50%) translateY(36px) scale(0.96);z-index:10;filter:brightness(0.96)}
+
+/* center hero content */
+.container-fluid .row{align-items:center}
+
+/* make cards look nicer on small screens */
+@media (max-width:480px){
+	.card-deck{width:320px;height:560px}
+	.swipe-actions .action{width:56px;height:56px;font-size:1.25rem}
+}
+

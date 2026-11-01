@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Đăng ký tài khoản CatSocial - Tìm bạn đời cho mèo của bạn" />
+  <title>Đăng ký - CatSocial</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles/register.css" />
+</head>
+<body>
+  <nav>
+    <a href="./index.html" class="logo">Cat<span>Social</span></a>
+  </nav>
+
+  <div class="page-body">
+    <div class="login-card">
+      <h2 class="login-card-title">Đăng ký</h2>
+      <p class="login-card-sub">Tạo tài khoản để bắt đầu gặp gỡ boss mèo mới</p>
+
+      <form action="#" id="registerForm" novalidate>
+      <div class="form-control">
+        <input 
+          type="text" 
+          id="fullname" 
+          name="fullname" 
+          required 
+          autocomplete="name"
+          placeholder=" "
+        />
+        <label for="fullname">Họ và tên</label>
+      </div>
+
+      <div class="form-control">
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          required 
+          autocomplete="email"
+          placeholder=" "
+        />
+        <label for="email">Email</label>
+      </div>
+
+      <div class="form-control">
+        <input 
+          type="password" 
+          id="password" 
+          name="password" 
+          required 
+          autocomplete="new-password"
+          placeholder=" "
+        />
+        <label for="password">Mật khẩu</label>
+        <p style="font-size: 0.85rem; color: #7a7a7a; margin-top: 0.35rem;">Ít nhất 6 ký tự, gồm 1 ký tự đặc biệt như @, # hoặc !</p>
+      </div>
+
+      <div class="form-control">
+        <input 
+          type="password" 
+          id="confirm-password" 
+          name="confirmPassword" 
+          required 
+          autocomplete="new-password"
+          placeholder=" "
+        />
+        <label for="confirm-password">Nhập lại mật khẩu</label>
+      </div>
+
+      <button type="submit" class="btn-submit">
+        <i class="fa-solid fa-paw"></i>
+        Đăng ký
+      </button>
+      <div class="divider"><span>hoặc tiếp tục với</span></div>
+      <div class="social-btns">
+        <button type="button" class="btn-social google">
+          <i class="fa-brands fa-google"></i> Google
+        </button>
+        <button type="button" class="btn-social facebook">
+          <i class="fa-brands fa-facebook"></i> Facebook
+        </button>
+      </div>
+      <p class="card-footer-text">Đã có tài khoản? <a href="./login.html">Đăng nhập ngay</a></p>
+    </form>
+  </div>
+</div>
+
+<footer>
+  Copyright &copy; 2025 CatSocial &mdash; Made with ❤️ for cats
+</footer>
+</body>
+<script type="module" src="./script/firebase.js"></script>
+<script type="module" src="./script/register.js"></script>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Đăng nhập vào CatSocial - Tìm bạn đời cho mèo của bạn" />
+  <title>Đăng nhập - CatSocial</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./styles/login.css" />
+</head>
+<body>
+
+  <nav>
+    <a href="./index.html" class="logo">Cat<span>Social</span></a>
+  </nav>
+
+  <div class="page-body">
+    <div class="login-card">
+
+      <h2 class="login-card-title">Chào mừng trở lại!</h2>
+      <p class="login-card-sub">Đăng nhập để gặp gỡ những chú mèo dễ thương gần bạn</p>
+
+      <form action="#" id="loginForm" novalidate>
+        <div class="form-control">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            autocomplete="email"
+            placeholder=" "
+          />
+          <label for="email">Email</label>
+        </div>
+
+        <div class="form-control">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            autocomplete="current-password"
+            placeholder=" "
+          />
+          <label for="password">Mật khẩu</label>
+          <button type="button" class="toggle-pw" aria-label="Hiện mật khẩu">
+            <i class="fa-regular fa-eye" id="pw-icon"></i>
+          </button>
+        </div>
+
+        <div class="form-help">
+          <label class="remember-me">
+            <input type="checkbox" id="remember-me" name="remember" />
+            Ghi nhớ tôi
+          </label>
+          <a href="#" class="forgot-link">Quên mật khẩu?</a>
+        </div>
+
+        <button type="submit" class="btn-submit">
+          <i class="fa-solid fa-paw"></i>
+          Đăng nhập
+        </button>
+      </form>
+
+      <div class="divider"><span>hoặc tiếp tục với</span></div>
+
+      <div class="social-btns">
+        <button type="button" class="btn-social google">
+          <i class="fa-brands fa-google"></i> Google
+        </button>
+        <button type="button" class="btn-social facebook">
+          <i class="fa-brands fa-facebook"></i> Facebook
+        </button>
+      </div>
+
+      <p class="card-footer-text">
+        Chưa có tài khoản? <a href="./register.html">Đăng ký ngay</a>
+      </p>
+
+    </div>
+  </div>
+
+  <footer>
+    Copyright &copy; 2025 CatSocial &mdash; Made with ❤️ for cats
+  </footer>
+
+  <script type="module" src="./script/firebase.js"></script>
+  <script type="module" src="./script/login.js"></script>
+  <script>
+    const toggleBtn = document.querySelector('.toggle-pw');
+    const pwInput   = document.getElementById('password');
+    const pwIcon    = document.getElementById('pw-icon');
+
+    if (toggleBtn && pwInput && pwIcon) {
+      toggleBtn.addEventListener('click', () => {
+        const isHidden = pwInput.type === 'password';
+        pwInput.type     = isHidden ? 'text' : 'password';
+        pwIcon.className = isHidden ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye';
+      });
+    }
+  </script>
+
+</body>
+
+</html>

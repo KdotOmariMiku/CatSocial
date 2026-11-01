@@ -1,0 +1,748 @@
+ <!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CatSocial - Ứng dụng ghép đôi dành riêng cho mèo. Tìm bạn đời hoàn hảo cho boss nhà bạn ngay hôm nay!">
+  <meta property="og:title" content="CatSocial - Tinder cho mèo 🐱">
+  <meta property="og:description" content="Ứng dụng gặp gỡ và ghép đôi những chú mèo thú vị gần bạn.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1596854407944-8128fd1779f4?w=1200">
+  <meta property="og:url" content="https://catsocial.vn">
+  <title>CatSocial - Tinder cho mèo 🐱</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=64" type="image/png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- AOS Animation Library (để hiệu ứng scroll mượt mà, pro hơn) -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Font Awesome 6 -->
+  <script src="https://kit.fontawesome.com/5b0d7e3c9a.js" crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      font-family: 'Nunito', 'Segoe UI', Arial, sans-serif;
+      background: radial-gradient(circle at top left, rgba(254, 107, 139, 0.18), transparent 20%),
+                  radial-gradient(circle at bottom right, rgba(255, 142, 83, 0.16), transparent 18%),
+                  #fff9f5;
+      color: #1f1e23;
+      overflow-x: hidden;
+    }
+
+    .btn {
+      font-family: 'Nunito', 'Segoe UI', Arial, sans-serif;
+      border-radius: 999px !important;
+      padding: 14px 28px;
+      letter-spacing: 0.01em;
+      transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, color 180ms ease;
+      box-shadow: 0 16px 36px rgba(255, 111, 103, 0.18);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 50px rgba(255, 111, 103, 0.22);
+    }
+
+    /* Navbar sticky + shadow */
+    .navbar {
+      background: rgba(255, 255, 255, 0.94) !important;
+      backdrop-filter: blur(16px);
+      transition: all 0.3s;
+      box-shadow: 0 16px 40px rgba(255, 111, 103, 0.15);
+    }
+
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 1) !important;
+      padding: 0.5rem 0;
+    }
+
+    .navbar .navbar-brand,
+    .navbar .nav-link {
+      color: #1f1e23 !important;
+      font-weight: 700;
+    }
+
+    .navbar .nav-link:hover {
+      color: #ff6b8b !important;
+    }
+
+    .container-fluid {
+      max-width: 1600px;
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+
+    .colored-section {
+      background: linear-gradient(135deg, #f38969 0%, #ff6b8b 100%);
+      color: #fff;
+      padding: 12% 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .colored-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('https://images.unsplash.com/photo-1533749047139-189de09cf370?w=2000') center/cover no-repeat;
+      opacity: 0.08;
+      z-index: 0;
+    }
+
+    .colored-section > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .white-section {
+      background-color: #fff8f2;
+      padding: 10% 0;
+    }
+
+    .big-heading {
+      font-family: 'Nunito', 'Segoe UI', Arial, sans-serif;
+      font-size: clamp(2.25rem, 7vw, 5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: #1f1e23;
+      overflow-wrap: anywhere;
+    }
+
+    .sub-heading {
+      font-size: clamp(1.75rem, 4vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 4rem;
+      color: #1f1e23;
+    }
+
+    .feature-title {
+      font-weight: 700;
+      font-size: 2rem;
+      color: #1f1e23;
+    }
+
+    .feature-text {
+      color: #7f7a84;
+      font-size: 1.3rem;
+      max-width: 420px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .tinder-pink { color: #ff6b8b; }
+
+    .testimonial-text {
+      font-size: 2rem;
+      line-height: 1.8;
+      font-style: italic;
+      color: #fff;
+    }
+
+    .testimonial-image {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border: 12px solid #fff;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.22);
+    }
+
+    .pricing-text {
+      font-size: 4rem;
+      font-weight: 700;
+      color: #ff6b8b;
+    }
+
+    .card {
+      border: 1px solid #ffe0d4;
+      border-radius: 35px;
+      overflow: hidden;
+      transition: all 0.5s ease;
+      box-shadow: 0 20px 50px rgba(255, 111, 103, 0.12);
+      background: #ffffff;
+    }
+
+    .card:hover {
+      transform: translateY(-20px) scale(1.02);
+      box-shadow: 0 40px 80px rgba(255, 111, 103, 0.18);
+    }
+
+    .premium-card {
+      border: 8px solid #ff8f6d !important;
+      transform: scale(1.06);
+    }
+
+    .premium-card:hover {
+      transform: translateY(-20px) scale(1.08);
+    }
+
+    .btn-tinder {
+      background: linear-gradient(135deg, #ff8f6d, #ff6b8b);
+      border: none;
+      border-radius: 999px;
+      padding: 18px 54px;
+      font-weight: 700;
+      font-size: 1.35rem;
+      box-shadow: 0 16px 42px rgba(255,111,103,0.32);
+      color: #fff;
+      transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
+      min-height: 62px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-tinder:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 24px 55px rgba(255,111,103,0.42);
+      opacity: 0.98;
+    }
+
+    .btn-dark,
+    .btn-outline-dark,
+    .btn-outline-light,
+    .btn-light.text-dark {
+      border-radius: 999px;
+      min-height: 62px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+      padding: 16px 34px;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .btn-dark {
+      background: #1f1e23;
+      border: none;
+      color: #fff;
+      box-shadow: 0 18px 38px rgba(0,0,0,0.25);
+    }
+
+    .btn-dark:hover {
+      background: #2e2d33;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-dark,
+    .btn-outline-light,
+    .btn-light.text-dark {
+      background: #ffffff;
+      color: #1f1e23;
+      border: 1px solid rgba(31,30,35,0.18);
+      box-shadow: 0 14px 38px rgba(0,0,0,0.08);
+    }
+
+    .btn-outline-dark:hover,
+    .btn-outline-light:hover,
+    .btn-light.text-dark:hover {
+      background: rgba(255,255,255,1);
+      border-color: rgba(255,111,103,0.25);
+      color: #ff6b8b;
+      transform: translateY(-2px);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.12);
+    }
+
+    .btn-outline-light {
+      background: rgba(255,255,255,0.95);
+      color: #1f1e23;
+      border: 1px solid rgba(31,30,35,0.12);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+
+    .btn-outline-light:hover {
+      background: rgba(255,255,255,1);
+      border-color: rgba(255,111,103,0.25);
+      transform: translateY(-2px);
+    }
+
+    #pricing .card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 430px;
+    }
+
+    #pricing .card-body .btn {
+      margin-top: auto;
+      min-height: 64px;
+      width: 75%;
+      font-size: 1.16rem;
+      font-weight: 700;
+    }
+
+    .btn-light.text-dark {
+      background: #fff;
+      color: #1f1e23;
+      border: 1px solid rgba(31,30,35,0.12);
+      border-radius: 999px;
+      padding: 14px 34px;
+      box-shadow: 0 14px 36px rgba(0,0,0,0.08);
+    }
+
+    .btn-light.text-dark:hover {
+      background: #fff;
+      box-shadow: 0 18px 44px rgba(0,0,0,0.12);
+    }
+
+    #cta .btn {
+      min-width: 150px;
+      padding: 14px 32px;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: none;
+      white-space: nowrap;
+      transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
+    }
+
+    #cta .btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.98;
+    }
+
+    #cta .btn + .btn {
+      margin-left: 1rem;
+    }
+
+    #cta .btn i {
+      margin-right: 0.55rem;
+    }
+
+    #last-section {
+      font-family: 'Nunito', 'Segoe UI', Arial, sans-serif;
+      font-size: 4.8rem;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .footer-icon {
+      color: #ff6b8b;
+      font-size: 3.5rem;
+      transition: all 0.4s;
+    }
+
+    .footer-icon:hover {
+      color: #ff8f6d;
+      transform: translateY(-15px) scale(1.4);
+    }
+
+    .title-image {
+      max-width: 100%;
+      border-radius: 30px;
+      box-shadow: 0 35px 80px rgba(255, 111, 103, 0.16);
+      border: 10px solid rgba(255, 255, 255, 0.88);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.35));
+      transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+    }
+
+    .title-image:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 45px 100px rgba(255, 111, 103, 0.24);
+      filter: saturate(1.08);
+    }
+
+    .lead {
+      color: #4a4a57;
+      font-size: 1.4rem;
+      line-height: 1.8;
+      max-width: 700px;
+    }
+
+    .card-header {
+      background: transparent;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .card-header h3 {
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: #1f1e23;
+    }
+
+    .card-body {
+      padding: 2.5rem 2.2rem 2rem;
+      color: #5f5663;
+    }
+
+    .card-body ul {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .card-body ul li {
+      position: relative;
+      margin-bottom: 1rem;
+      padding-left: 28px;
+      font-size: 1.05rem;
+    }
+
+    .card-body ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #ff6b8b;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    #contact .form-label {
+      font-weight: 700;
+      color: #1f1e23;
+    }
+
+    #contact .form-control-lg {
+      border-radius: 18px;
+      border: 1.5px solid #ffe0d4;
+      background: #fff7f3;
+      box-shadow: inset 0 0 0 1px #ffe0d4;
+      color: #1f1e23;
+    }
+
+    #contact .form-control-lg:focus {
+      border-color: #ff8f6d;
+      box-shadow: 0 0 0 0.15rem rgba(255, 143, 109, 0.15);
+    }
+
+    #contact .btn-tinder {
+      min-width: 220px;
+      padding: 18px 48px;
+    }
+
+    footer {
+      background: transparent;
+      color: #7f7a84;
+    }
+
+    footer a {
+      color: #ff6b8b;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      filter: invert(1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .swipe-icon {
+      font-size: 5.5rem;
+      margin-bottom: 2.5rem;
+      color: #ff6b8b;
+      transition: all 0.4s;
+    }
+
+    .swipe-icon:hover {
+      transform: scale(1.2);
+    }
+
+    .feature-image {
+      width: 100%;
+      max-width: 380px;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-bottom: 2rem;
+      box-shadow: 0 15px 40px rgba(255, 111, 103, 0.2);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .feature-image:hover {
+      transform: scale(1.08);
+      box-shadow: 0 20px 50px rgba(255, 111, 103, 0.3);
+    }
+
+    .testimonial-carousel .carousel-control-prev-icon,
+    .testimonial-carousel .carousel-control-next-icon {
+      filter: invert(1);
+    }
+
+    @media (max-width: 1200px) {
+      .big-heading { font-size: 4.2rem; }
+      #last-section { font-size: 4rem; }
+    }
+
+    @media (max-width: 992px) {
+      .big-heading { font-size: clamp(2.25rem, 7vw, 3.5rem); }
+      #last-section { font-size: 3.5rem; }
+      .premium-card { transform: none; }
+    }
+
+    @media (max-width: 576px) {
+      .container-fluid {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .big-heading {
+        font-size: clamp(2.25rem, 11vw, 3.5rem);
+        line-height: 1.08;
+      }
+
+      .sub-heading {
+        font-size: clamp(1.6rem, 7vw, 2.2rem);
+        line-height: 1.2;
+      }
+
+      .lead {
+        font-size: 1.1rem !important;
+      }
+
+      #last-section {
+        font-size: clamp(2.5rem, 12vw, 4rem);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Title Section -->
+  <section id="title" class="colored-section">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <a class="navbar-brand fw-bold" href="">CatSocial 🐱</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#features">Tính năng</a></li>
+            <li class="nav-item"><a class="nav-link" href="#testimonials">Câu chuyện</a></li>
+            <li class="nav-item"><a class="nav-link" href="#pricing">Bảng giá</a></li>
+            <li class="nav-item"><a class="nav-link" href="#footer">Liên hệ</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="row align-items-center mt-5" data-aos="fade-up">
+        <div class="col-lg-6">
+          <h1 class="big-heading">Gặp gỡ những chú mèo<br>thú vị gần bạn ngay hôm nay.</h1>
+          <p class="lead mb-5" style="font-size: 1.5rem;">Tình yêu đích thực dành cho boss nhà bạn 😻</p>
+          <button type="button" class="btn btn-dark btn-lg me-4"><i class="fa-brands fa-apple"></i> App Store</button>
+          <button type="button" class="btn btn-outline-light btn-lg me-4"><i class="fa-brands fa-google-play"></i> Google Play</button>
+          <a class="btn btn-light btn-lg text-dark" href="login.html"><i class="fas fa-globe"></i> Dùng trên web</a>
+        </div>
+        <div class="col-lg-6 text-center" data-aos="fade-left" data-aos-delay="300">
+          <img class="title-image img-fluid rounded-4 shadow-lg" src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=900&h=1100&fit=crop&q=80" alt="Mèo xinh đẹp trên CatSocial">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="white-section">
+    <div class="container" data-aos="fade-up">
+      <h2 class="text-center mb-5 fw-bold tinder-pink sub-heading">Boss nhà bạn đang cô đơn?<br>Bạn đã tìm đúng chỗ rồi!</h2>
+      <div class="row text-center">
+        <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+          <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=500&h=400&fit=crop" alt="Mèo con ngọt ngào" class="feature-image">
+          <i class="fas fa-heart swipe-icon tinder-pink"></i>
+          <h3 class="feature-title">Swipe Right để Like</h3>
+          <p class="feature-text">Thích profile nào? Swipe phải để gửi tim ❤️</p>
+        </div>
+        <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="300">
+          <img src="https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=500&h=400&fit=crop" alt="Mèo lựa chọn" class="feature-image">
+          <i class="fas fa-times swipe-icon tinder-pink"></i>
+          <h3 class="feature-title">Swipe Left để Pass</h3>
+          <p class="feature-text">Không hợp gu? Swipe trái để bỏ qua</p>
+        </div>
+        <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="500">
+          <img src="https://images.unsplash.com/photo-1595433707802-6b2626ef1c91?w=500&h=400&fit=crop" alt="Hai mèo hạnh phúc" class="feature-image">
+          <i class="fas fa-bolt swipe-icon tinder-pink"></i>
+          <h3 class="feature-title">Match & Chat ngay!</h3>
+          <p class="feature-text">Khi cả hai cùng like → Match! Meow meow thoải mái 😻</p>
+        </div>
+      </div>
+      <p class="text-center fw-bold mt-4" style="font-size: 1.3rem; color: #fe6b8b;">Dùng trực tiếp trên trình duyệt, không cần tải app — CatSocial chạy thẳng trên web.</p>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="colored-section">
+    <div class="container-fluid" data-aos="fade-up">
+      <div id="testimonialCarousel" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="carousel-item active text-center">
+            <h2 class="testimonial-text">“Tôi không còn phải ngửi mông mèo lạ nữa. Đã tìm được British Shorthair siêu hot trên CatSocial. Meow!”</h2>
+            <img class="testimonial-image rounded-circle" src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=400" alt="Mèo Pebbles">
+            <cite class="d-block mt-4 fw-bold fs-4">Pebbles, New York</cite>
+          </div>
+          <div class="carousel-item text-center">
+            <h2 class="testimonial-text">“Boss nhà tôi từng rất cô đơn, giờ thì ngày nào cũng có date. Cảm ơn CatSocial!”</h2>
+            <img class="testimonial-image rounded-circle" src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400" alt="Chủ mèo Beverly">
+            <cite class="d-block mt-4 fw-bold fs-4">Beverly, Illinois</cite>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="white-section">
+    <div class="container" data-aos="fade-up">
+      <h2 class="text-center mb-5 fw-bold tinder-pink sub-heading">Gói phù hợp cho mọi boss</h2>
+      <p class="text-center feature-text mb-5" style="font-size: 1.5rem;">Giá siêu hời, tình yêu vô giá</p>
+      <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 mb-5" data-aos="flip-left" data-aos-delay="100">
+          <div class="card h-100">
+            <div class="card-header text-center"><h3>Siamese</h3></div>
+            <div class="card-body text-center">
+              <h2 class="pricing-text">Miễn phí</h2>
+              <ul class="list-unstyled mt-4 fs-5">
+                <li>5 lượt swipe/ngày</li>
+                <li>10 tin nhắn/ngày</li>
+                <li>Dùng app thoải mái</li>
+              </ul>
+              <button class="btn btn-tinder btn-lg w-75 mt-5">Bắt đầu miễn phí</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-5" data-aos="flip-left" data-aos-delay="300">
+          <div class="card premium-card h-100">
+            <div class="card-header text-center"><h3>British Shorthair ⭐</h3></div>
+            <div class="card-body text-center">
+              <h2 class="pricing-text">490.000đ / tháng</h2>
+              <ul class="list-unstyled mt-4 fs-5">
+                <li>Swipe không giới hạn</li>
+                <li>Nhắn tin không giới hạn</li>
+                <li>Ưu tiên hiển thị</li>
+              </ul>
+              <button class="btn btn-tinder btn-lg w-75 mt-5">Nâng cấp ngay</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-5" data-aos="flip-left" data-aos-delay="500">
+          <div class="card h-100">
+            <div class="card-header text-center"><h3>Maine Coon</h3></div>
+            <div class="card-body text-center">
+              <h2 class="pricing-text">990.000đ / tháng</h2>
+              <ul class="list-unstyled mt-4 fs-5">
+                <li>Top profile</li>
+                <li>Swipe & chat vô hạn</li>
+                <li>Hỗ trợ ưu tiên</li>
+              </ul>
+              <button class="btn btn-tinder btn-lg w-75 mt-5">VIP</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" class="colored-section text-center">
+    <div class="container-fluid" data-aos="zoom-in">
+      <h3 id="last-section">Tìm tình yêu đích thực<br>cho boss nhà bạn ngay hôm nay!</h3>
+      <button type="button" class="btn btn-dark btn-lg me-4"><i class="fa-brands fa-apple"></i> App Store</button>
+      <button type="button" class="btn btn-outline-light btn-lg me-4"><i class="fa-brands fa-google-play"></i> Google Play</button>
+      <a class="btn btn-light btn-lg text-dark" href="login.html"><i class="fas fa-globe"></i> Dùng trên web</a>
+      <p class="mt-4 fs-5">Hoặc dùng ngay trên trình duyệt, không cần cài đặt thêm.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer" class="white-section py-5">
+    <div class="container text-center">
+      <h2 class="mb-5 fw-bold tinder-pink">Liên hệ với team meow 🐾</h2>
+      <div class="row justify-content-center mb-5">
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <i class="fas fa-envelope fa-4x footer-icon mb-4"></i>
+          <p class="fw-bold fs-3">Email</p>
+          <p><a href="mailto:Catsocial@gmail.com" class="text-dark text-decoration-none">Catsocial@gmail.com</a></p>
+        </div>
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <i class="fas fa-phone fa-4x footer-icon mb-4"></i>
+          <p class="fw-bold fs-3">Hotline</p>
+          <p><a href="tel:+84901234567" class="text-dark text-decoration-none">+84 90 123 4567</a></p>
+        </div>
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="500">
+          <i class="fas fa-map-marker-alt fa-4x footer-icon mb-4"></i>
+          <p class="fw-bold fs-3">Địa chỉ</p>
+          <p>Hà Nội, Việt Nam 🏙️</p>
+        </div>
+      </div>
+      <!-- Contact -->
+<section id="contact" class="white-section">
+  <div class="container" data-aos="fade-up">
+    <h2 class="text-center mb-5 fw-bold tinder-pink sub-heading">
+      Gửi lời nhắn cho team meow 🐱
+    </h2>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <form action="mailto:Catsocial@gmail.com" method="POST" enctype="text/plain">
+          
+          <div class="mb-4">
+            <label class="form-label fw-bold">Tên của bạn</label>
+            <input type="text" name="Tên" class="form-control form-control-lg" placeholder="Boss tên gì nè?" required>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label fw-bold">Email</label>
+            <input type="email" name="Email" class="form-control form-control-lg" placeholder="email@gmail.com" required>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label fw-bold">Nội dung</label>
+            <textarea name="Nội dung" rows="5" class="form-control form-control-lg" placeholder="Meow meow điều gì đó..." required></textarea>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-tinder btn-lg">
+              <i class="fas fa-paper-plane"></i> Gửi Gmail
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <div class="mt-5">
+        <a href="#" class="mx-4"><i class="fa-brands fa-x-twitter footer-icon"></i></a>
+        <a href="#" class="mx-4"><i class="fa-brands fa-facebook-f footer-icon"></i></a>
+        <a href="#" class="mx-4"><i class="fa-brands fa-instagram footer-icon"></i></a>
+      </div>
+
+      <p class="feature-text mt-5">© 2026 CatSocial - Made with ❤️ cho các boss mèo</p>
+      <p class="feature-text mt-5">PLEASE TINDER DONT SUE ME THIS IS JUST FOR MY SCHOOL PROJECT</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap + AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+  </script>
+</body>
+</html>

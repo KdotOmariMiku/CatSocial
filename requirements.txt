@@ -1,0 +1,3 @@
+firebase-admin
+Flask
+Flask-Cors

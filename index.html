@@ -12,10 +12,14 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script>
-    if (new URLSearchParams(window.location.search).get('afterLogin') !== '1') {
-      window.location.replace(new URL('./CatSocial.html', window.location.href).href);
-    }
+  <script type="module">
+    import { auth, onAuthStateChanged } from './script/firebase.js';
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user && new URLSearchParams(window.location.search).get('afterLogin') !== '1') {
+        window.location.replace(new URL('./CatSocial.html', window.location.href).href);
+      }
+    });
   </script>
   <meta name="description" content="CatSocial - Nơi những chú mèo tìm bạn đời, bạn bè và tình yêu đích thực." />
   <meta name="keywords" content="catsocial, app mèo, tìm bạn mèo, dating mèo, social cho mèo" />

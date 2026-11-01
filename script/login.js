@@ -16,7 +16,7 @@ const forgotLink = document.querySelector('.forgot-link');
 const adminUid = 'tqwlmVOxlyWXZMDYH7OJDKhRVRI3';
 
 function getPostLoginUrl(user) {
-  return user.uid === adminUid ? './Administrator.html' : './index.html';
+  return user.uid === adminUid ? './Administrator.html' : './index.html?afterLogin=1';
 }
 
 function showToast(message) {
